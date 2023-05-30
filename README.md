@@ -17,13 +17,10 @@ You have been asked to create a simple React application that allows users to br
 
 ## Instructions
 
-- Fork this repository to your own GitHub account.
-- Clone the forked repository to your local machine.
-- Create a new branch to work on your changes.
+- Open this repository to your local machine.
 - Implement the requirements outlined above.
-- Commit your changes and push them to your GitHub repository.
-- Create a pull request from your branch to the main branch of the original repository.
-- In the pull request description, include instructions for running your application and any notes you have about your implementation.
+- Create a new private repository on your own GitHub account and push your changes there.
+- Share the link to your private repository with us by replying to the email.
 
 ## Evaluation Criteria
 
