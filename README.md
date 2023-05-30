@@ -15,12 +15,17 @@ You have been asked to create a simple React application that allows users to br
 - A graphical representation of room occupancy over a month using ReCharts should be provided.
   - It should show a line graph with days on the X-axis and room occupancy percentage on the Y-axis. Different categories of rooms should be represented by different lines on the graph. Provide a legend and tooltips for the chart to enhance user understanding.
 
+## Getting Started
+
+- Run `npm install` to install the dependencies.
+- Run `npm run dev` to start the development server.
+- Go to `http://localhost:5173` to view the application and the sample data.
+
 ## Instructions
 
 - Open this repository to your local machine.
 - Implement the requirements outlined above.
-- Create a new private repository on your own GitHub account and push your changes there.
-- Share the link to your private repository with us by replying to the email.
+- Send your implementation by replying to the email with a download link.
 
 ## Evaluation Criteria
 
