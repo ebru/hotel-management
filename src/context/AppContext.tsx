@@ -1,12 +1,19 @@
 import { createContext, FC, ReactNode, useState } from 'react';
 
-interface ContextProps {
-  roomsToClean: any;
-  setRoomsToClean: (rooms: any) => void;
+interface RoomToClean {
+  [id: string]: string;
 }
+
+interface ContextProps {
+  roomsToCleanMap: RoomToClean;
+  addRoomToClean: (id: string) => void;
+  removeRoomFromClean: (id: string) => void;
+}
+
 export const AppContext = createContext<ContextProps>({
-  roomsToClean: {},
-  setRoomsToClean: () => null,
+  roomsToCleanMap: {},
+  addRoomToClean: () => null,
+  removeRoomFromClean: () => null,
 });
 
 interface AppProviderProps {
@@ -14,14 +21,31 @@ interface AppProviderProps {
 }
 
 export const AppProvider: FC<AppProviderProps> = ({ children }) => {
-  const [roomsToClean, setRoomsToClean] = useState<any>({});
+  const [roomsToCleanMap, setRoomsToCleanMap] = useState<RoomToClean>({});
+
+  const addRoomToClean = (id: string) => {
+    setRoomsToCleanMap(prev => ({
+      ...prev,
+      [id]: new Date().toISOString(),
+    }));
+  };
+
+  const removeRoomFromClean = (id: string) => {
+    setRoomsToCleanMap(prev => {
+      const newRooms = { ...prev };
+      delete newRooms[id];
+      return newRooms;
+    });
+  };
 
   return (
     <AppContext.Provider
       value={{
-        roomsToClean,
-        setRoomsToClean,
-      }}>
+        roomsToCleanMap,
+        addRoomToClean,
+        removeRoomFromClean,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
