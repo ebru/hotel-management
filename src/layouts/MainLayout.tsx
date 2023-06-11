@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+import { Header } from '../components'
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -7,12 +8,15 @@ interface MainLayoutProps {
 
 const MainLayout: FC<MainLayoutProps> = ({ children, title }) => {
   return (
-    <div className='p-8 flex flex-col gap-5'>
-      <h1 className='text-xl mb-2'>{title}</h1>
-      <div>
-        {children}
+    <>
+      <Header />
+      <div className='p-8 flex flex-col gap-5'>
+        <h1 className='text-xl mb-2 font-semibold'>{title}</h1>
+        <div>
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

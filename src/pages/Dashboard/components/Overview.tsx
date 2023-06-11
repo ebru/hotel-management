@@ -1,6 +1,6 @@
 
 import { FC } from 'react';
-import { ArrowPathRoundedSquareIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline'
+import { ArrowPathRoundedSquareIcon, BuildingOfficeIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline'
 import { Card, OverviewCell } from '../../../components'
 
 interface OverviewProps {
@@ -25,6 +25,14 @@ const Overview: FC<OverviewProps> = ({ cleaningCount }) => {
             // Some dummy data
             data='80%'
             renderIcon={() => <BuildingOfficeIcon className='h-8 w-8 text-blue-500 mr-2' />}
+          />
+        </div>
+        <div className='flex items-center w-full md:w-1/6'>
+          <OverviewCell
+            title='Revenue'
+            // Some dummy data
+            data='$840'
+            renderIcon={() => <CurrencyDollarIcon className='h-8 w-8 text-green-500 mr-2' />}
           />
         </div>
       </div>
