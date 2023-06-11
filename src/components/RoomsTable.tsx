@@ -4,14 +4,15 @@ import { Room } from '../types'
 import { Card, Table } from '.';
 
 interface RoomsProps {
+  title?: string;
   data: Room[];
   onToggleRoomCleaning: (id: string) => void;
   isClean: (id: string) => boolean,
 }
 
-const RoomsTable: FC<RoomsProps> = ({ data, onToggleRoomCleaning, isClean }) => {
+const RoomsTable: FC<RoomsProps> = ({ title, data, onToggleRoomCleaning, isClean }) => {
   return (
-    <Card title='Rooms'>
+    <Card title={title}>
       <div className='overflow-x-auto'>
         <Table headers={['Image', 'Number', 'Category', '']}>
           {data.map((room, index) => (

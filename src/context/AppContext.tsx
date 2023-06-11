@@ -1,11 +1,8 @@
 import { createContext, FC, ReactNode, useState } from 'react';
-
-interface RoomToClean {
-  [id: string]: string;
-}
+import { RoomsToCleanMap } from '../types';
 
 interface ContextProps {
-  roomsToCleanMap: RoomToClean;
+  roomsToCleanMap: RoomsToCleanMap;
   toggleRoomCleaning: (id: string) => void;
 }
 
@@ -19,7 +16,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider: FC<AppProviderProps> = ({ children }) => {
-  const [roomsToCleanMap, setRoomsToCleanMap] = useState<RoomToClean>({});
+  const [roomsToCleanMap, setRoomsToCleanMap] = useState<RoomsToCleanMap>({});
 
   const addRoomToClean = (id: string) => {
     setRoomsToCleanMap(prev => ({

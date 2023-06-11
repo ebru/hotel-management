@@ -1,14 +1,9 @@
-import hotelRooms from './../../../data/rooms.json'
-import { useAppContext } from '../../../hooks'
+import { useRooms } from '../../../hooks'
 import { generateOccupancyData } from './../../../utils/generateOccupancyData'
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
 
 export const useDashboard = () => {
-  const { roomsToCleanMap, toggleRoomCleaning } = useAppContext()
-
-  const isClean = useCallback((id: string) => {
-    return roomsToCleanMap[id] ? false : true;
-  }, [roomsToCleanMap]);
+  const { hotelRooms, roomsToCleanMap, toggleRoomCleaning, isClean } = useRooms()
 
   const occupancyData = useMemo(() => generateOccupancyData(), []);
 

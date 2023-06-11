@@ -5,6 +5,10 @@ export interface Room {
   image: string;
 }
 
+export interface RoomsToCleanMap {
+  [id: string]: string;
+}
+
 export interface Occupancy {
   date: string;
   Standard: number;
