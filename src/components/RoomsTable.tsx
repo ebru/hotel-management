@@ -1,15 +1,15 @@
 import { FC } from 'react'
 import { ArrowPathRoundedSquareIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Room } from '../../../types'
-import { Card, Table } from '../../../components';
+import { Room } from '../types'
+import { Card, Table } from '.';
 
 interface RoomsProps {
   data: Room[];
   onToggleRoomCleaning: (id: string) => void;
-  getCleanButtonText: (id: string) => string,
+  isClean: (id: string) => boolean,
 }
 
-const Rooms: FC<RoomsProps> = ({ data, onToggleRoomCleaning, getCleanButtonText }) => {
+const RoomsTable: FC<RoomsProps> = ({ data, onToggleRoomCleaning, isClean }) => {
   return (
     <Card title='Rooms'>
       <div className='overflow-x-auto'>
@@ -23,18 +23,18 @@ const Rooms: FC<RoomsProps> = ({ data, onToggleRoomCleaning, getCleanButtonText 
               <td className='px-2 py-2 whitespace-nowrap w-20'>{room.category}</td>
               <td className='px-2 py-2 text-right w-100'>
                 <button
-                  className={`inline-flex items-center justify-center space-x-2 text-sm px-3 py-2 rounded-md transition duration-200 ease-in-out ${getCleanButtonText(room.room_number) === 'Needs cleaning' ?
+                  className={`inline-flex items-center justify-center space-x-2 text-sm px-3 py-2 rounded-md transition duration-200 ease-in-out ${isClean(room.room_number) ?
                     'bg-indigo-500 hover:bg-indigo-700 text-white' :
                     'bg-red-500 hover:bg-red-700 text-white'
                     }`}
                   onClick={() => onToggleRoomCleaning(room.room_number)}
                 >
-                  {getCleanButtonText(room.room_number) === 'Needs cleaning' ? (
+                  {isClean(room.room_number) ? (
                     <ArrowPathRoundedSquareIcon className='h-5 w-5' />
                   ) : (
                     <XMarkIcon className='h-5 w-5' />
                   )}
-                  <span>{getCleanButtonText(room.room_number)}</span>
+                  <span>{isClean(room.room_number) ? 'Needs cleaning' : 'Remove cleaning'}</span>
                 </button>
               </td>
             </tr>
@@ -45,4 +45,4 @@ const Rooms: FC<RoomsProps> = ({ data, onToggleRoomCleaning, getCleanButtonText 
   )
 }
 
-export default Rooms
+export default RoomsTable

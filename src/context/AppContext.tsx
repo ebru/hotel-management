@@ -6,14 +6,12 @@ interface RoomToClean {
 
 interface ContextProps {
   roomsToCleanMap: RoomToClean;
-  addRoomToClean: (id: string) => void;
-  removeRoomFromClean: (id: string) => void;
+  toggleRoomCleaning: (id: string) => void;
 }
 
 export const AppContext = createContext<ContextProps>({
   roomsToCleanMap: {},
-  addRoomToClean: () => null,
-  removeRoomFromClean: () => null,
+  toggleRoomCleaning: () => null,
 });
 
 interface AppProviderProps {
@@ -38,12 +36,15 @@ export const AppProvider: FC<AppProviderProps> = ({ children }) => {
     });
   };
 
+  const toggleRoomCleaning = (id: string) => {
+    return roomsToCleanMap[id] ? removeRoomFromClean(id) : addRoomToClean(id)
+  }
+
   return (
     <AppContext.Provider
       value={{
         roomsToCleanMap,
-        addRoomToClean,
-        removeRoomFromClean,
+        toggleRoomCleaning,
       }}
     >
       {children}

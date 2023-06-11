@@ -4,14 +4,10 @@ import { generateOccupancyData } from './../../../utils/generateOccupancyData'
 import { useCallback, useMemo } from 'react'
 
 export const useDashboard = () => {
-  const { roomsToCleanMap, addRoomToClean, removeRoomFromClean } = useAppContext()
+  const { roomsToCleanMap, toggleRoomCleaning } = useAppContext()
 
-  const onToggleRoomCleaning = (id: string) => {
-    return roomsToCleanMap[id] ? removeRoomFromClean(id) : addRoomToClean(id)
-  }
-
-  const getCleanButtonText = useCallback((id: string) => {
-    return roomsToCleanMap[id] ? 'Remove cleaning' : 'Needs cleaning';
+  const isClean = useCallback((id: string) => {
+    return roomsToCleanMap[id] ? false : true;
   }, [roomsToCleanMap]);
 
   const occupancyData = useMemo(() => generateOccupancyData(), []);
@@ -19,8 +15,8 @@ export const useDashboard = () => {
   return {
     hotelRooms,
     occupancyData,
-    onToggleRoomCleaning,
-    getCleanButtonText,
+    toggleRoomCleaning,
+    isClean,
     cleaningCount: Object.values(roomsToCleanMap).length,
   }
 }
