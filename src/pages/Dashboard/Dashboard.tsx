@@ -1,3 +1,4 @@
+import { MainLayout } from '../../layouts'
 import { Occupancy, Overview, Rooms } from './components'
 import { useDashboard } from './hooks/useDashboard'
 
@@ -11,8 +12,7 @@ const Dashboard = () => {
   } = useDashboard()
 
   return (
-    <div className='p-8 flex flex-col gap-5'>
-      <h1 className='text-xl'>Dashboard</h1>
+    <MainLayout title='Dashboard'>
       <Overview
         cleaningCount={cleaningCount}
       />
@@ -28,7 +28,7 @@ const Dashboard = () => {
           <Occupancy data={occupancyData} />
         </div>
       </div>
-    </div>
+    </MainLayout>
   )
 }
 
