@@ -1,4 +1,5 @@
 export { default as Card } from './UI/Card'
+export { default as CleanButton } from './CleanButton'
 export { default as Header } from './Header'
 export { default as OverviewCell } from './OverviewCell'
 export { default as RoomsTable } from './RoomsTable'
