@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { CheckIcon } from '@heroicons/react/24/outline'
-import { Room } from '../types'
-import Card from './UI/Card';
-import Table from './UI/Table';
-import CleanButton from './CleanButton';
+import { Room } from '../../types'
+import Card from '../UI/Card';
+import Table from '../UI/Table';
+import TableRow from './TableRow';
 
 interface RoomsProps {
   title?: string;
@@ -13,7 +13,6 @@ interface RoomsProps {
 }
 
 const RoomsTable: FC<RoomsProps> = ({ title, data, onToggleRoomCleaning, isClean }) => {
-  console.log('rerender')
   return (
     <Card title={title}>
       <div className='overflow-x-auto'>
@@ -27,19 +26,13 @@ const RoomsTable: FC<RoomsProps> = ({ title, data, onToggleRoomCleaning, isClean
         {data.length > 0 && (
           <Table headers={['Image', 'Number', 'Category', '']}>
             {data.map((room, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
-                <td className='px-2 py-2 whitespace-nowrap w-10'>
-                  <img src={room.image} alt={room.description} className='w-16 h-16 rounded-sm object-cover' />
-                </td>
-                <td className='px-2 py-2 whitespace-nowrap text-right w-20'>{room.room_number}</td>
-                <td className='px-2 py-2 whitespace-nowrap w-20'>{room.category}</td>
-                <td className='px-2 py-2 text-right w-100'>
-                  <CleanButton
-                    isClean={isClean(room.room_number)}
-                    onToggleRoomCleaning={() => onToggleRoomCleaning(room.room_number)}
-                  />
-                </td>
-              </tr>
+              <TableRow
+                key={index}
+                index={index}
+                room={room}
+                onToggleRoomCleaning={onToggleRoomCleaning}
+                isClean={isClean}
+              />
             ))}
           </Table>
         )}
