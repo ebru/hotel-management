@@ -8,13 +8,15 @@ interface OccupancyProps {
 }
 
 const Occupancy: FC<OccupancyProps> = ({ data }) => {
+  const formatPercentage = (value: number) => `${value}%`;
+
   return (
     <Card title='Occupancy'>
       <div className='overflow-x-auto'>
         <LineChart width={650} height={400} data={data}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='date' />
-          <YAxis />
+          <YAxis tickFormatter={formatPercentage} />
           <Tooltip />
           <Legend />
           <Line type='monotone' dataKey='Standard' stroke='#8884d8' activeDot={{ r: 8 }} />
