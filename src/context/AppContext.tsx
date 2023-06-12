@@ -17,6 +17,7 @@ interface AppProviderProps {
 
 export const AppProvider: FC<AppProviderProps> = ({ children }) => {
   const [roomsToCleanMap, setRoomsToCleanMap] = useState<RoomsToCleanMap>({});
+  // TODO: Permanent storing with local storage can be applied
 
   const addRoomToClean = (id: string) => {
     setRoomsToCleanMap(prev => ({

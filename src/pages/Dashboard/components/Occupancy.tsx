@@ -13,6 +13,7 @@ const Occupancy: FC<OccupancyProps> = ({ data }) => {
   return (
     <Card title='Occupancy'>
       <div className='overflow-x-auto'>
+        {/* TODO: Create a LineChart reusable component getting data directly in props for consistency in future uses */}
         <LineChart width={650} height={400} data={data}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='date' />

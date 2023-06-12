@@ -12,6 +12,7 @@ const CleanButton: FC<CleanButtonProps> = ({ isClean, onToggleRoomCleaning }) =>
       'bg-indigo-500 hover:bg-indigo-700 text-white' :
       'bg-red-500 hover:bg-red-700 text-white'
       }`}
+    // TODO: Add modal confirmation for removing
     onClick={onToggleRoomCleaning}
   >
     {isClean ? (

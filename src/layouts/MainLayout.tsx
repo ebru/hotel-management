@@ -10,6 +10,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children, title }) => {
   return (
     <>
       <Header />
+      {/* TODO: Better navigation with sidebar menu etc. */}
       <div className='p-8 flex flex-col gap-5'>
         <h1 className='text-xl mb-2 font-semibold'>{title}</h1>
         <div>

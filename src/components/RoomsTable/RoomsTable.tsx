@@ -12,6 +12,7 @@ interface RoomsProps {
   isClean: (id: string) => boolean,
 }
 
+// TODO: Create a DataTable reusable component getting data directly in props for consistency in future uses
 const RoomsTable: FC<RoomsProps> = ({ title, data, onToggleRoomCleaning, isClean }) => {
   return (
     <Card title={title}>
@@ -25,6 +26,7 @@ const RoomsTable: FC<RoomsProps> = ({ title, data, onToggleRoomCleaning, isClean
         )}
         {data.length > 0 && (
           <Table headers={['Image', 'Number', 'Category', '']}>
+            {/* TODO: Add pagination to the table data for smooth loading experience */}
             {data.map((room, index) => (
               <TableRow
                 key={index}

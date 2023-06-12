@@ -1,3 +1,4 @@
+// TODO: Absolute import config for cleaner import statements
 import { MainLayout } from '../../layouts'
 import { RoomsTable } from '../../components'
 import { Occupancy, Overview } from './components'
